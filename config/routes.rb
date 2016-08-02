@@ -1,11 +1,19 @@
 Rails.application.routes.draw do
+  devise_for :users
+  get 'static/pages'
+
+  get 'static/about'
+
+  get 'static/contact'
+
   get 'static_pages/about'
 
   get 'static_pages/contact'
 
   get 'test/index' 
   root 'test#index' 
-  resources :articles 
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-end
+  
+  resources :articles do 
+  	resources :comments  
+	end  
+end 
